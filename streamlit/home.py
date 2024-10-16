@@ -9,8 +9,8 @@ import main_analysis as main
 # DATA LOADING
 #######################################
 
-st.set_page_config(layout='wide') 
- 
+st.set_page_config(layout='wide')
+
 @st.cache_data # Caching data loading functions
 def load_data(url):
     return pd.read_csv(url)
@@ -257,18 +257,18 @@ elif year == '2020':
 
 elif year == '2021':
     main.main_analysis(df2021)
-    main.common_analysis_2021_2022(df2021, year)
+    main.common_analysis_2021_2022(df2021,year)
     visual, analysis = st.columns((3, 1))
     with visual:
         fig = func.plot_valuecounts_plotly(df2021,'NEWStuck')
         st.plotly_chart(fig)
-    
+
     with analysis:
         newstuck_text = """
         <div class='analysis-container'>
             <div class='analysis-title'>Analysis: NewsStuck Analysis</div>
             <div class='analysis-text' style="color: red; font-weight: bold;">
-                We're all stuck while coding, sometime or other. StackOverflow asked its users what resource they use to get help while they feel stuck. 
+                We're all stuck while coding, sometime or other. StackOverflow asked its users what resource they use to get help while they feel stuck.
                 Most of the people replied in quite a wordy way, we tried to implement simple NLP techniques to dissect the top answers.
                 Most answers seem to align with the 'internet help' view. Where they seek help from Google, StackOverflow Websites. Others rely on their colleagues and friends to  help them over.
         </div>
@@ -283,15 +283,15 @@ elif year == '2021':
         <div class='analysis-container'>
             <div class='analysis-title'>Analysis: Operating System</div>
             <div class='analysis-text' style="color: red; font-weight: bold;">
-                Windows has been the dominated Operating System for most of the people around the world. With Linux and iOS having same proportion of userbase. 
+                Windows has been the dominated Operating System for most of the people around the world. With Linux and iOS having same proportion of userbase.
         </div>
     """
         st.markdown(opsys_text, unsafe_allow_html=True)
 
-    
+
 else:
     main.main_analysis(df2022)
-    main.common_analysis_2021_2022(df2022, year)
+    main.common_analysis_2021_2022(df2022,year)
 
     fig = func.compare_language_columns_and_plot(df2022, 'OpSysPersonal use', 'OpSysProfessional use')
 
